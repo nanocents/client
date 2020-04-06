@@ -3,8 +3,8 @@ let clientid =
 const urlpath = `https://nanocents.com/webpurchase`;
 
 const items = {
-    donate: { item: 29, amount: 10, desc: "Donation" },
-    gatsby: { item: 30, amount: 5, desc: "Gatsby", replacement: "You voted for Gatsby!" },
+    donate: { amount: 10, desc: "Donation" },
+    gatsby: { amount: 5, desc: "Gatsby", replacement: "You voted for Gatsby!" },
 };
 const purchase = async (id) => {
     let purchase = items[id];
