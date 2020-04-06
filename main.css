@@ -8,6 +8,9 @@
     justify-content: center;
     margin-bottom: 20px;
 }
+.was-button {
+    color: green;
+}
 .pay-button {
     margin: 0px 10px 10px;
 }

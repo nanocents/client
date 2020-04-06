@@ -4,13 +4,14 @@ const urlpath = `https://nanocents.com/webpurchase`;
 
 const items = {
     donate: { item: 29, amount: 10, desc: "Donation" },
-    gatsby: { item: 30, amount: 5, desc: "Gatsby" },
+    gatsby: { item: 30, amount: 5, desc: "Gatsby", replacement: "You voted for Gatsby!" },
 };
 const purchase = async (id) => {
     let purchase = items[id];
     let furl = itemToPath({ item: id, ...purchase });
     console.log("FURL %s", furl);
-    location.assign(furl);
+    let r = items[id].replacement;
+    // location.assign(furl);
 };
 const itemToPath = (purchase) => {
     var array = new Uint8Array(1);
@@ -47,20 +48,27 @@ const itemToPath = (purchase) => {
     console.log("GOT ST ", st);
     if (!!st.err) {
         console.log("Error getting purchases:` %s", st.err);
-        // clear the user from storage
         return;
     }
 
     if (st.status === "ok") {
-        console.log("STATUS OKAY");
         st.data.map((i) => {
             console.log("i.item is %s", i.item);
             let z = document.getElementById(i.item);
-            if (z !== null) {
-                replaceit(i.item);
-            } else {
-                console.log("z is null for %s", i.item);
+            if (z !== null && z.replacement) {
+                console.log("FOUND REPLACE ABLE");
+                elementreplace(i.item, z.replacement);
             }
         });
     }
 })(clientid);
+
+const elementreplace = (elid, replacement) => {
+    let el = document.getElementById(elid);
+    let parentDiv = el.parentNode;
+    let elnew = document.createElement("p");
+    elnew.classList.add("was-button");
+    let t = document.createTextNode(replacement);
+    elnew.appendChild(t);
+    parentDiv.replaceChild(elnew, el);
+};
