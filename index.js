@@ -52,7 +52,7 @@ const itemToPath = (purchase) => {
 
     if (st.status === "ok") {
         st.data.map((i) => {
-            let id = item;
+            let id = i.item;
             console.log("i.item is %s", id);
             let z = document.getElementById(id);
             if (z !== null && items[id].replacement) {
