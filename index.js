@@ -2,9 +2,15 @@ let clientid =
     "c0fc4e121c6db2c9f8810d72a9b624bb:ebdd21ff0183f881581539c0063753d7f18c056128279539bbedc17f6e0a21dec6cf7f8e75cfefb940f4fd3ce31445fb0770124fa73f53eb67df627ca99c7113";
 const urlpath = `https://nanocents.com/webpurchase`;
 
-const donate = async (id) => {
-    let furl = itemToPath({ item: id, ...item });
-    location.assign(furl);
+const items = {
+    donate: { item: 29, amount: 10, desc: "Donation" },
+    gatsby: { item: 30, amount: 5, desc: "Gatsby" },
+};
+const purchase = async (id) => {
+    let purchase = items[id];
+    let furl = itemToPath({ item: id, ...purchase });
+    console.log("FURL %s", furl);
+    // location.assign(furl);
 };
 const itemToPath = (purchase) => {
     var array = new Uint8Array(1);
@@ -58,5 +64,3 @@ const itemToPath = (purchase) => {
         });
     }
 })(clientid);
-
-const item = { item: 29, amount: 10, desc: "Donation" };

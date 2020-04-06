@@ -1,5 +1,14 @@
-.OC {
-    color: blue;
-    font-size: 20px;
+.NC {
+    color: green;
+    font-size: 15px;
+}
+.button-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.pay-button {
+    margin: 0px 10px 10px;
 }
 
