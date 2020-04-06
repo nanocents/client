@@ -7,7 +7,7 @@ const donate = async (id) => {
     location.assign(furl);
 };
 const itemToPath = (purchase) => {
-    var array = new Uint8(1);
+    var array = new Uint8Array(1);
     window.crypto.getRandomValues(array);
     let txid = array[0];
     let item = `amount=${purchase.amount}&desc=${purchase.desc}&item=${purchase.item}`;
