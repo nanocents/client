@@ -1,17 +1,24 @@
 let clientid =
     "c0fc4e121c6db2c9f8810d72a9b624bb:ebdd21ff0183f881581539c0063753d7f18c056128279539bbedc17f6e0a21dec6cf7f8e75cfefb940f4fd3ce31445fb0770124fa73f53eb67df627ca99c7113";
+const urlpath = `https://nanocents.com/webpurchase`;
 
 const donate = async (id) => {
     let furl = itemToPath({ item: id, ...item });
     location.assign(furl);
+};
+const itemToPath = (purchase) => {
+    var array = new Uint8(1);
+    window.crypto.getRandomValues(array);
+    let txid = array[0];
+    let item = `amount=${purchase.amount}&desc=${purchase.desc}&item=${purchase.item}`;
+    let furl = `${urlpath}?client=${nanocents}&txid=${txid}&${item}`;
+    return furl;
 };
 
 (async (clientid) => {
     let url = new URL(location);
     console.log("url " + url);
 
-    // get all the purchases this client has made
-    // TERMINOGY client should be clientid
     let furl = `https://nanocents.com/clientapi/getwebpurchases?client=${clientid}`;
     console.log("fetching %s", furl);
     let response = await fetch(furl, {
