@@ -52,11 +52,12 @@ const itemToPath = (purchase) => {
 
     if (st.status === "ok") {
         st.data.map((i) => {
-            console.log("i.item is %s", i.item);
-            let z = document.getElementById(i.item);
-            if (z !== null && z.replacement) {
+            let id = item;
+            console.log("i.item is %s", id);
+            let z = document.getElementById(id);
+            if (z !== null && items[id].replacement) {
                 console.log("FOUND REPLACE ABLE");
-                elementreplace(i.item, z.replacement);
+                elementreplace(i.item, items[id].replacement);
             }
         });
     }
