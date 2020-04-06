@@ -10,7 +10,7 @@ const purchase = async (id) => {
     let purchase = items[id];
     let furl = itemToPath({ item: id, ...purchase });
     console.log("FURL %s", furl);
-    // location.assign(furl);
+    location.assign(furl);
 };
 const itemToPath = (purchase) => {
     var array = new Uint8Array(1);
