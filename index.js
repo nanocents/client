@@ -11,7 +11,7 @@ const itemToPath = (purchase) => {
     window.crypto.getRandomValues(array);
     let txid = array[0];
     let item = `amount=${purchase.amount}&desc=${purchase.desc}&item=${purchase.item}`;
-    let furl = `${urlpath}?client=${nanocents}&txid=${txid}&${item}`;
+    let furl = `${urlpath}?client=${clientid}&txid=${txid}&${item}`;
     return furl;
 };
 
